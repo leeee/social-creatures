@@ -21,15 +21,15 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser(
     description='Fetch gchat logs and output CSV')
   parser.add_argument('-u', '--username', help='Gmail username')
-  parser.add_argument('-f', '--fetch',
-    help='Fetch logs from gmail (This may take a while)', action="store_true")
-  parser.add_argument('-d', '--dir', help='Directory to save logs to',
-    default='chat-logs')
+  parser.add_argument('-s', '--skipfetch',
+    help='Skip fetching logs from gmail.', action="store_true")
+  parser.add_argument('-d', '--dir',
+    help='Directory to store and read logs from', default='chat-logs')
   parser.add_argument('-o', '--outfile', help='File to output CSV to',
     default='all-chats.csv')
   args = parser.parse_args()
 
-  if args.fetch:
+  if not args.skipfetch:
     if args.username:
       logger = chats.GChatLog(user=args.username, passwd=getpass.getpass())
       logger.import_chats(args.dir)
