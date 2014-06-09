@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 Table table;
 int rows;
-int currentRow = 98000; // Skip header row
+int currentRow = 1; // Skip header row
 int frame = 0;
 float speed = 1;
 int peopleSeen = 0;
@@ -19,7 +19,7 @@ void setup() {
   size(640, 640);
   colorMode(HSB, 360, 100, 100);
   background(0);
-  table = loadTable("all-sorted.csv", "header, newlines");
+  table = loadTable("all.csv", "header, newlines");
   rows = table.getRowCount();
 
   messages = new ArrayList<Message>();

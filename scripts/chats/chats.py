@@ -48,6 +48,7 @@ class GChatLogs(object):
         for id in self.chat_ids:
             if not os.path.exists('%s/%s.chat' % (directory, id)):
                 try:
+                    print 'fetching chat #' + id
                     chat = self.get_chat(id)
                     chat.write(directory)
                     count += 1

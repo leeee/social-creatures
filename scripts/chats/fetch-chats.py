@@ -2,6 +2,7 @@ import argparse
 import chats
 import csv
 import getpass
+import os
 import sys
 
 def validate_email(email):
@@ -30,13 +31,17 @@ if __name__ == "__main__":
   args = parser.parse_args()
 
   if not args.skipfetch:
-    if args.username:
-      logger = chats.GChatLogs(user=args.username, passwd=getpass.getpass())
-      logger.import_chats(args.dir)
-    else:
+    if not args.username:
       print 'Provide a username with -u'
       sys.exit()
+    elif not os.path.exists(args.dir):
+      print 'Directory "' + args.dir + '" does not exist.'
+      sys.exit()
+    else:
+      logger = chats.GChatLogs(user=args.username, passwd=getpass.getpass())
+      logger.import_chats(args.dir)
 
+  print 'creating CSV...'
   csv_file = open(args.outfile, 'w')
   csv_writer = csv.writer(csv_file)
   csv_writer.writerow(('Timestamp','From','To','Source','Extra'))
@@ -52,3 +57,4 @@ if __name__ == "__main__":
                       message.receiver, 'gchat', message.body))
 
   csv_file.close()
+  print 'done!'

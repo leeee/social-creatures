@@ -6,13 +6,13 @@ import operator
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(
     description='Combine our generated CSVs into one')
-  parser.add_argument('files', help='Comma delimited list of CSVs to combine',
+  parser.add_argument('files', help='CSVs to combine',
     nargs='+')
   parser.add_argument('-o', '--outfile', help='File to output to',
     default='all.csv')
   args = parser.parse_args()
 
-  with open(args.outfile, 'r+') as outfile:
+  with open(args.outfile, 'w+') as outfile:
     # Combine CSVs
     for line in fileinput.input(args.files):
       if not line.startswith('Timestamp'):
