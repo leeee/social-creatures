@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
   if not args.skipfetch:
     if args.username:
-      logger = chats.GChatLog(user=args.username, passwd=getpass.getpass())
+      logger = chats.GChatLogs(user=args.username, passwd=getpass.getpass())
       logger.import_chats(args.dir)
     else:
       print 'Provide a username with -u'
