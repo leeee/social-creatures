@@ -49,7 +49,7 @@ class Message {
     }
 
     String date() {
-      SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/YY");
+      SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
       return sdf.format(timestamp);
     }
 }

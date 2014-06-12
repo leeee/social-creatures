@@ -2,6 +2,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 
+String YOUR_EMAIL = "";
+String YOUR_PHONE = "";
+String YOUR_FOURSQUARE_NAME = "";
+
 Table table;
 int rows;
 int currentRow = 1; // Skip header row
@@ -25,12 +29,12 @@ void setup() {
   messages = new ArrayList<Message>();
   people = new HashMap<String, Person>();
   me = new Person(156, 70, 100);
-  me.ids.add("le.giantsquid.wei@gmail.com");
-  me.ids.add("+13022521884");
-  me.ids.add("");
-  people.put("le.giantsquid.wei@gmail.com", me);
-  people.put("+13022521884", me);
-  people.put("", me);
+  me.ids.add(YOUR_EMAIL);
+  me.ids.add(YOUR_PHONE);
+  me.ids.add(YOUR_FOURSQUARE_NAME);
+  people.put(YOUR_EMAIL, me);
+  people.put(YOUR_PHONE, me);
+  people.put(YOUR_FOURSQUARE_NAME, me);
 
   sources = new HashMap<String, Source>();
   sources.put("gchat", new Source("gchat", 61, 100, 100));
